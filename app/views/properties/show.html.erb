@@ -1,0 +1,22 @@
+<h1>閲覧</h1>
+<%= "物件名：#{@property.name}" %><br>
+<%= "賃料：#{@property.rent}円" %><br>
+<%= "住所：#{@property.address}" %><br>
+<%= "築年数 #{@property.age}年" %><br>
+<%= "備考 #{@property.remark}" %><br>
+<hr>
+<% @property.stations.each.inject(1) do |i,s| %>
+  <%= "最寄り駅#{i}" %><br>
+  <%= "路線名 #{s.route}" %><br>
+  <%= "駅名 #{s.name}" %><br>
+  <%= "徒歩分数 #{s.walk_minutes}分" %><br>
+  <% i += 1 %>
+<% end %>
+<%= link_to "編集", edit_property_path(@property.id) %>
+<%= link_to "戻る", properties_path %>
+
+
+
+
+
+
