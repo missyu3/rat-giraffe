@@ -4,6 +4,5 @@ class Station < ApplicationRecord
     validates :name
     validates :route
     validates :walk_minutes
-    validates :property_id
   end
 end
