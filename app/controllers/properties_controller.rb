@@ -15,19 +15,27 @@ before_action :get_data,only:[:index]
     end
   end
 
+  def edit
+  end
+
+
   def index
   end
 
-  def edit
+  def show
+    get_property_includes
   end
 
   private
   def get_params
-    params.require(:property).permit(:name, :rent, :address, :age, :remark,stations_attributes: [:name,:route,:walk_minutes])
+    @properties = params.require(:property).permit(:name, :rent, :address, :age, :remark,stations_attributes: [:name,:route,:walk_minutes])
+  end
+
+  def get_property_includes
+    @property = Property.includes(:stations).find(params[:id])
   end
 
   def get_data
     @properties = Property.all
-    @properties.all.includes(:stations)
   end
 end
