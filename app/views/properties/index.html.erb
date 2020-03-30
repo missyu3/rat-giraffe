@@ -1,30 +1,30 @@
 <h1>一覧</h1>
 <hr>
-<h2>物件一覧</h2>
-<table>
-  <tr>
-    <th>物件名</th>
-    <th>賃料</th>
-    <th>住所</th>
-    <th>築年数</th>
-    <th>備考</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <%@properties.each do |f| %>
+<div class = "main">
+  <h2>物件一覧</h2>
+  <table>
     <tr>
-      <td><%=f.name%></td>
-      <td><%="#{f.rent}円"%></td>
-      <td><%=f.address%></td>
-      <td><%="#{f.age}年"%></td>
-      <td><%=f.remark%></td>
-      <td>
-        <%= link_to "詳細",property_path(f.id) %>
-      </td>
-      <td><%= link_to "編集",edit_property_path(f.id) %></td>
-      <td><%= link_to "削除",properties_path, mthod: :delete %></td>
+      <th id="row_name">物件名</th>
+      <th id="row_rent">賃料</th>
+      <th id="row_address">住所</th>
+      <th id="row_age">築年数</th>
+      <th id="row_remark">備考</th>
+      <th id="row_show"></th>
+      <th id="row_edit"></th>
+      <th id="row_destroy"></th>
     </tr>
-  <% end %>
-</table>
-<%= link_to "物件を登録する",new_property_path %>
+    <%@properties.each do |f| %>
+      <tr>
+        <td><%=f.name%></td>
+        <td><%="#{f.rent.to_s(:delimited)}円"%></td>
+        <td><%=f.address%></td>
+        <td><%="#{f.age}年"%></td>
+        <td><%=f.remark%></td>
+        <td><%= link_to "詳細",property_path(f.id) %></td>
+        <td><%= link_to "編集",edit_property_path(f.id) %></td>
+        <td><%= link_to "削除",properties_path, mthod: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "物件を登録する",new_property_path %>
+</div>
