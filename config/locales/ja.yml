@@ -1,6 +1,26 @@
----
 ja:
   activerecord:
+    attributes:
+      properties:
+        name: 物件名
+        rent: 賃料
+        address: 住所
+        age: 築年数
+        remark: 備考
+      stations: 
+        name: 駅名
+        route: 路線名
+        walk_minutes: 徒歩分数
+      property:
+        name: 物件名
+        rent: 賃料
+        address: 住所
+        age: 築年数
+        remark: 備考
+      station: 
+        name: 駅名
+        route: 路線名
+        walk_minutes: 徒歩分数
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
