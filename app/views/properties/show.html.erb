@@ -1,16 +1,30 @@
 <h1>閲覧</h1>
-<%= "物件名：#{@properties.name}" %><br>
-<%= "賃料：#{@properties.rent}円" %><br>
-<%= "住所：#{@properties.address}" %><br>
-<%= "築年数 #{@properties.age}年" %><br>
-<%= "備考 #{@properties.remark}" %><br>
-<hr>
-<% @properties.stations.each.inject(1) do |i,s| %>
-  <%= "最寄り駅#{i}" %><br>
-  <%= "路線名 #{s.route}" %><br>
-  <%= "駅名 #{s.name}" %><br>
-  <%= "徒歩分数 #{s.walk_minutes}分" %><br>
-  <% i += 1 %>
-<% end %>
-<%= link_to "編集", edit_property_path(@properties.id) %>
-<%= link_to "戻る", properties_path %>
+<div class = "main">
+  <span class="show_title">物件名：</span>
+  <%= @properties.name %><br>
+  <span class="show_title">賃料：</span>
+  <%= "#{@properties.rent.to_s(:delimited)}円" %><br>
+  <span class="show_title">住所：</span>
+  <%= @properties.address %><br>
+  <span class="show_title">築年数</span>
+  <%= " #{@properties.age}年" %><br>
+  <span class="show_title">備考</span>
+  <%= " #{@properties.remark}" %><br>
+  <hr>
+  <% @properties.stations.each.inject(1) do |i,s| %>
+    <div class="show_station_index">
+      <%= " 最寄り駅#{i}" %>
+    </div>
+    <br>
+    <span class="show_title">路線名</span>
+    <%= " #{s.route}" %><br>
+    <span class="show_title">駅名</span>
+    <%= " #{s.name}" %><br>
+    <span class="show_title">徒歩分数</span>
+    <%= " #{s.walk_minutes}分" %><br>
+    <% i += 1 %>
+  <% end %>
+  <%= link_to "編集", edit_property_path(@properties.id) %>
+  
+  <%= link_to "戻る", properties_path, class: "v_line_left" %>
+</div>

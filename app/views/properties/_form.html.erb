@@ -19,6 +19,7 @@
   <%= f.number_field :age %>年<br>
   <%= f.label :remark %><br>
   <%= f.text_area :remark %><br>
+  <hr>
   <%= f.fields_for :stations do |s| %>
     <%= "最寄り駅#{s.index + 1}" %><br>
     <%= s.label :name %><br>
@@ -28,6 +29,6 @@
     <%= s.label :walk_minutes %><br>
     <%= s.number_field :walk_minutes %>分<br>
   <% end %>
-  <%= f.submit "投稿する" %><br>
+    <% submit_show = button_display %>
+    <%= f.submit submit_show %><br>
 <% end %>
-<%= link_to "戻る", properties_path %>
