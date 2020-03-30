@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :get_data,only:[:index]
-  before_action :get_property_includes,only:[:show,:edit,:update]
+  before_action :get_property_includes,only:[:show,:edit,:update,:destroy]
 
   def new
     @properties = Property.new
@@ -25,6 +25,14 @@ class PropertiesController < ApplicationController
       redirect_to properties_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @properties.destroy
+      redirect_to properties_path, notice:"削除しました"
+    else
+      render:index
     end
   end
 

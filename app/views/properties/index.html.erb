@@ -22,7 +22,7 @@
         <td><%=f.remark%></td>
         <td><%= link_to "詳細",property_path(f.id) %></td>
         <td><%= link_to "編集",edit_property_path(f.id) %></td>
-        <td><%= link_to "削除",properties_path, mthod: :delete %></td>
+        <td><%= link_to "削除",property_path(f.id), method: :delete %></td>
       </tr>
     <% end %>
   </table>
